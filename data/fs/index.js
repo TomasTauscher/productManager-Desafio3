@@ -91,6 +91,6 @@ addProduct("Producto 5", "el quinto producto", 899, "http://www.google.com", "AD
     "description": "el tercer producto"
 }); */
 
-deleteProduct(2)
+/* deleteProduct(2) */
 
 export { addProduct, getProducts, getProductById, updateProduct, deleteProduct }
