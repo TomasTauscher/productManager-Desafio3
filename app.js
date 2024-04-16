@@ -8,6 +8,7 @@ app.listen(port, ready)
 
 app.get("/", index)
 
+
 function index(req, res) {
     try {
         const message = "Welcome to coder-notes";
