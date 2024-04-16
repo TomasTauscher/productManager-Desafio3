@@ -1,8 +1,10 @@
-const fs = require ("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
 let products = [];
-let pathFile = "./data/products.json"
+/* let pathFile = "../fs/files/products.json" */
+let pathFile = "../data/fs/files/products.json"
+
 
 const addProduct = async (title, description, price, thumbnail, code, stock) => {
 
@@ -34,6 +36,7 @@ const addProduct = async (title, description, price, thumbnail, code, stock) => 
 
 const getProducts = async () => {
 
+    console.log(pathFile)
     const productsJson =  await fs.promises.readFile(pathFile, "utf8")
     products = JSON.parse(productsJson) || [];
 
@@ -89,3 +92,5 @@ addProduct("Producto 5", "el quinto producto", 899, "http://www.google.com", "AD
 }); */
 
 deleteProduct(2)
+
+export { addProduct, getProducts, getProductById, updateProduct, deleteProduct }
