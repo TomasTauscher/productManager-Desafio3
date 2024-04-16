@@ -3,7 +3,7 @@ import path from "path";
 
 let products = [];
 /* let pathFile = "../fs/files/products.json" */
-let pathFile = "../data/fs/files/products.json"
+let pathFile = "../desafio/data/fs/files/products.json"
 
 
 const addProduct = async (title, description, price, thumbnail, code, stock) => {
