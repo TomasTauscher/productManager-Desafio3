@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", index)
 app.get("/products", read);
-app.get("/products/:id", readID)
+app.get("/products/:pId", readID)
 
 function index(req, res) {
     try {
@@ -26,12 +26,16 @@ function index(req, res) {
 
 async function read(req, res) {
     try {
+        const limit = req.query.limit;
         const all = await getProducts();
-    if (all.length > 0) {
-        return res.json({ status: 200, response: all });
-    } else {
-        return res.json({ status: 404, response: "Not found" });
-    }
+        if (limit) {
+            all = all.slice(0, parseInt(limit));
+        }
+        if (all.length > 0) {
+            return res.json({ status: 200, response: all });
+        } else {
+            return res.json({ status: 404, response: "Not found" });
+        }
     } catch (error) {
         console.log(error);
         return res.json({ status: 500, response: error.message });
@@ -40,8 +44,8 @@ async function read(req, res) {
 
 async function readID(req, res) {
     try {
-        const { id }  = req.params;
-        const one = await getProductById(id);
+        const { pId }  = req.params;
+        const one = await getProductById(pId);
         if (one) {
             return res.json({ status: 200, response: one });
         } else {
