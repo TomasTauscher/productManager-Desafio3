@@ -45,16 +45,17 @@ const getProducts = async () => {
 
 const getProductById = async (id) => {
     await getProducts();
-    const product = products.find( product => product.id === id)
-    if(!product){
-        console.log(`No se encontro el producto con el id ${id}`)
-        return
+    const numericId = parseInt(id);
+    const product = products.find(product => product.id === numericId);
+    if (!product) {
+        console.log(`No se encontro el producto con el ID ${id}`);
+        return;
     }
 
-    console.log(product)
-    return product
-
+    console.log(product);
+    return product;
 }
+
 
 const updateProduct = async (id, dataProduct) => {
     await getProducts();
